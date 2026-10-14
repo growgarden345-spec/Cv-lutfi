@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020807">
+<title>Lutfi Mulya Putra | Cyber CV</title>
+
+<style>
+:root {
+    --bg: #020807;
+    --panel: #06120f;
+    --green: #00ff9d;
+    --cyan: #00e5ff;
+    --text: #d5eee7;
+    --muted: #8ba99e;
+    --border: #087a52;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+}
+
+#matrix {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .15;
+    pointer-events: none;
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+a:hover {
+    color: var(--cyan);
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(2, 8, 7, .96);
+    border: 1px solid var(--border);
+    color: var(--green);
+}
+
+.brand {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.topbar button {
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid var(--green);
+    color: var(--green);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.layout {
+    max-width: 1400px;
+    margin: 12px auto;
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 16px;
+}
+
+.sidebar,
+.panel,
+.hero {
+    background: rgba(3, 15, 12, .95);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.sidebar {
+    padding: 20px 14px;
+    position: sticky;
+    top: 65px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: var(--green);
+    margin-bottom: 18px;
+}
+
+.sidebar nav {
+    display: grid;
+    gap: 7px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 9px;
+    color: var(--text);
+    border-left: 3px solid transparent;
+}
+
+.sidebar nav a:hover {
+    background: rgba(0, 255, 157, .1);
+    border-color: var(--green);
+}
+
+.quote {
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--green);
+    font-size: 13px;
+}
+
+.status {
+    margin-top: 25px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.online {
+    color: var(--green);
+}
+
+.content {
+    min-width: 0;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 22px;
+    padding: 24px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.avatar {
+    width: 130px;
+    height: 155px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-size: 55px;
+    background:
+        linear-gradient(135deg, transparent 40%, #06432f),
+        #04110d;
+    box-shadow: 0 0 20px rgba(0, 255, 157, .15);
+}
+
+h1 {
+    font-size: clamp(23px, 3vw, 38px);
+    color: white;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.tagline {
+    color: var(--cyan);
+    margin: 8px 0;
+}
+
+.intro {
+    color: var(--green);
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.contact {
+    display: grid;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 16px;
+}
+
+.panel {
+    padding: 18px;
+    margin-bottom: 14px;
+    scroll-margin-top: 80px;
+}
+
+.panel h2 {
+    color: var(--green);
+    font-size: 16px;
+    padding-bottom: 9px;
+    margin-bottom: 13px;
+    border-bottom: 1px solid #124431;
+}
+
+.panel h3 {
+    color: var(--cyan);
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+p, li {
+    font-size: 13px;
+}
+
+p {
+    color: var(--text);
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.timeline-item,
+.project {
+    padding: 10px 0;
+    border-bottom: 1px dashed #16402f;
+}
+
+.timeline-item:last-child,
+.project:last-child {
+    border-bottom: none;
+}
+
+.date {
+    color: var(--green);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.skill {
+    margin: 15px 0;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.bar {
+    height: 10px;
+    background: #103026;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00a968, var(--green));
+    border-radius: 20px;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.badge {
+    border: 1px solid var(--border);
+    padding: 5px 9px;
+    color: var(--green);
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li::before {
+    content: "✓ ";
+    color: var(--green);
+    font-weight: bold;
+}
+
+.cta {
+    text-align: center;
+    color: var(--green);
+}
+
+.footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .sidebar nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quote, .status {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .topbar {
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .layout {
+        padding: 0 8px;
+        gap: 10px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .avatar {
+        width: 95px;
+        height: 105px;
+        font-size: 40px;
+    }
+
+    .columns {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        color: #111;
+    }
+
+    #matrix, .topbar button, .sidebar {
+        display: none !important;
+    }
+
+    .layout {
+        display: block;
+        margin: 0;
+        max-width: none;
+    }
+
+    .hero, .panel {
+        background: white;
+        color: #111;
+        border: 1px solid #bbb;
+        break-inside: avoid;
+    }
+
+    .columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    h1, .panel h2, .panel h3, p, li, .tagline,
+    .intro, .date, .muted, .contact, .footer {
+        color: #111 !important;
+    }
+
+    a {
+        color: #111;
+    }
+
+    .footer {
+        border-color: #bbb;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<header class="topbar">
+    <div class="brand">&gt;_ LUTFI@CV:~</div>
+    <div>&lt; DREAM · LEARN · BUILD &gt;</div>
+    <button onclick="window.print()">CETAK / PDF</button>
+</header>
+
+<div class="layout">
+
+<aside class="sidebar">
+    <h3>MENU_SYS</h3>
+
+    <nav>
+        <a href="#beranda">⌂ Beranda</a>
+        <a href="#tentang">♙ Tentang Saya</a>
+        <a href="#pendidikan">▣ Pendidikan</a>
+        <a href="#proyek">⌘ Proyek</a>
+        <a href="#keahlian">⚙ Keahlian</a>
+        <a href="#sertifikat">▤ Pelatihan</a>
+        <a href="#kontak">✉ Kontak</a>
+    </nav>
+
+    <div class="quote">
+        <p style="color:var(--green)">
+            "Keamanan bukan hanya teknologi,
+            tetapi juga cara kita berpikir."
+        </p>
+        <br>
+        — Lutfi Mulya Putra
+    </div>
+
+    <div class="status">
+        STATUS: <span class="online">● ONLINE</span><br><br>
+        LOKASI: Bandung<br><br>
+        ROLE: TKJ / IT
+    </div>
+</aside>
+
+<main class="content">
+
+<section class="hero" id="beranda">
+    <div class="avatar" aria-label="Ikon profil">$_</div>
+
+    <div>
+        <h1>LUTFI MULYA PUTRA</h1>
+
+        <div class="tagline">
+            Siswa TKJ | Linux &amp; Cyber Security Enthusiast
+        </div>
+
+        <div class="intro">
+            Belajar hari ini untuk membangun masa depan yang lebih aman.
+        </div>
+
+        <div class="contact" id="kontak">
+            <div>☎ <a href="https://wa.me/6283816277000">0838-1627-7000</a></div>
+            <div>✉ <a href="mailto:lutfimulya004@gmail.com">lutfimulya004@gmail.com</a></div>
+            <div>⌖ Jl. Babakanbaru RT 05/RW 11, Bandung</div>
+            <div>⌘ SMK Negeri 5 Bandung | TKJ</div>
+        </div>
+    </div>
+</section>
+
+<div class="columns">
+
+<div>
+
+<section class="panel" id="tentang">
+    <h2>&gt; TENTANG SAYA</h2>
+
+    <p>
+        Saya adalah siswa SMK jurusan Teknik Komputer dan Jaringan (TKJ)
+        yang memiliki minat pada jaringan komputer, Linux, administrasi
+        server, dan keamanan siber. Saya terus belajar konfigurasi sistem,
+        troubleshooting jaringan, serta pengembangan website.
+        Saya siap mengembangkan kemampuan teknis melalui proyek dan
+        pengalaman praktik di bidang IT.
+    </p>
+</section>
+
+<section class="panel" id="pendidikan">
+    <h2>&gt; RIWAYAT PENDIDIKAN</h2>
+
+    <div class="timeline-item">
+        <div class="date">2025 — SEKARANG</div>
+        <strong>SMK Negeri 5 Bandung</strong>
+        <p>Teknik Komputer dan Jaringan (TKJ)</p>
+        <p class="muted">
+            Fokus pembelajaran: jaringan komputer, sistem operasi,
+            administrasi server, dan troubleshooting.
+        </p>
+    </div>
+
+    <div class="timeline-item">
+        <div class="date">PENDIDIKAN SEBELUMNYA</div>
+        <p>
+            Tambahkan nama SMP, tahun kelulusan, dan pengalaman pendidikan
+            sebelumnya sesuai data asli.
+        </p>
+    </div>
+</section>
+
+<section class="panel" id="proyek">
+    <h2>&gt; PROYEK &amp; PENGALAMAN PRAKTIK</h2>
+
+    <div class="project">
+        <h3>01. Ubuntu Server 24.04</h3>
+        <p>
+            Praktik instalasi dan konfigurasi Ubuntu Server,
+            pengaturan IP, Netplan, serta konektivitas jaringan.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>02. SSH &amp; Remote Server</h3>
+        <p>
+            Praktik akses server menggunakan SSH, PuTTY, dan Termius
+            untuk administrasi sistem jarak jauh.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>03. Web Server Apache</h3>
+        <p>
+            Praktik menyiapkan website HTML dan PHP,
+            menjalankan Apache, serta mengatur file website.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>04. Transfer File SFTP</h3>
+        <p>
+            Praktik transfer file menggunakan WinSCP
+            dan mempelajari pengaturan izin file.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>05. Cloudflare Tunnel</h3>
+        <p>
+            Eksperimen menghubungkan layanan web lokal agar dapat
+            diakses dari luar jaringan melalui tunnel.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>06. ZeroTier VPN</h3>
+        <p>
+            Praktik menghubungkan perangkat dalam jaringan virtual
+            untuk mengakses layanan server.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>07. Bot Telegram</h3>
+        <p>
+            Pengembangan bot Telegram menggunakan Cloudflare Workers
+            sebagai latihan pemrograman dan integrasi API.
+        </p>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>&gt; PRINSIP KERJA</h2>
+
+    <ul class="checklist">
+        <li>Disiplin dan bertanggung jawab.</li>
+        <li>Terus belajar dan mengembangkan kemampuan.</li>
+        <li>Teliti dalam troubleshooting.</li>
+        <li>Menjaga privasi dan keamanan data.</li>
+        <li>Menggunakan keterampilan secara etis dan legal.</li>
+    </ul>
+</section>
+
+</div>
+
+<div>
+
+<section class="panel" id="keahlian">
+    <h2>&gt; KEAHLIAN TEKNIS</h2>
+
+    <h3>Sistem &amp; Jaringan</h3>
+    <div class="badges">
+        <span class="badge">Ubuntu Server</span>
+        <span class="badge">TCP/IP</span>
+        <span class="badge">DHCP</span>
+        <span class="badge">DNS</span>
+        <span class="badge">MikroTik</span>
+        <span class="badge">SSH</span>
+    </div>
+
+    <h3>Tools &amp; Software</h3>
+    <div class="badges">
+        <span class="badge">PuTTY</span>
+        <span class="badge">WinSCP</span>
+        <span class="badge">Termius</span>
+        <span class="badge">Apache</span>
+        <span class="badge">VirtualBox</span>
+        <span class="badge">Termux</span>
+        <span class="badge">Git</span>
+    </div>
+
+    <h3>Web Development</h3>
+    <div class="badges">
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">PHP Dasar</span>
+        <span class="badge">Python Dasar</span>
+    </div>
+
+    <h3>Indikator Kemampuan</h3>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Jaringan Komputer</span>
+            <span>Dasar</span>
+        </div>
+        <div class="bar"><div class="fill" style="width:65%"></div></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Linux Server</span>
+            <span>Dasar</span>
+        </div>
+        <div class="bar"><div class="fill" style="width:60%"></div></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Web Development</span>
+            <span>Dasar</span>
+        </div>
+        <div class="bar"><div class="fill" style="width:55%"></div></div>
+    </div>
+
+    <p class="muted" style="margin-top:12px">
+        Catatan: indikator merupakan contoh tampilan, bukan hasil tes
+        kompetensi resmi. Sesuaikan dengan kemampuan sebenarnya.
+    </p>
+</section>
+
+<section class="panel" id="sertifikat">
+    <h2>&gt; SERTIFIKAT &amp; PELATIHAN</h2>
+
+    <p>
+        Bagian ini dapat diisi dengan sertifikat yang benar-benar
+        telah diperoleh.
+    </p>
+
+    <ul>
+        <li>Pelatihan jaringan komputer.</li>
+        <li>Praktik administrasi Linux.</li>
+        <li>Praktik konfigurasi server.</li>
+    </ul>
+
+    <p class="muted" style="margin-top:10px">
+        Hapus atau ganti daftar di atas jika belum mengikuti pelatihan
+        tersebut. Jangan mencantumkan sertifikat yang belum dimiliki.
+    </p>
+</section>
+
+<section class="panel">
+    <h2>&gt; MINAT KARIER</h2>
+
+    <div class="badges">
+        <span class="badge">Network Engineer</span>
+        <span class="badge">Linux Administrator</span>
+        <span class="badge">IT Support</span>
+        <span class="badge">Cyber Security</span>
+    </div>
+</section>
+
+<section class="panel cta">
+    <h2>&gt; SIAP BELAJAR &amp; BERKEMBANG</h2>
+
+    <p>
+        Membangun kemampuan teknis melalui praktik,
+        dokumentasi, dan proyek yang bermanfaat.
+    </p>
+
+    <br>
+
+    <a href="mailto:lutfimulya004@gmail.com">
+        [ HUBUNGI SAYA ]
+    </a>
+</section>
+
+</div>
+</div>
+</main>
+</div>
+
+<footer class="footer">
+    LUTFI MULYA PUTRA | DIGITAL CV<br>
+    TKJ · NETWORKING · LINUX · WEB DEVELOPMENT<br>
+    &copy; <span id="year"></span> — CV PORTFOLIO
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// Matrix animation
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+const characters = "01ABCDEF<>[]{}#$";
+const fontSize = 14;
+let columns = 0;
+let drops = [];
+
+function resizeMatrix() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * ratio;
+    canvas.height = window.innerHeight * ratio;
+
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    columns = Math.ceil(window.innerWidth / fontSize);
+    drops = Array.from(
+        { length: columns },
+        () => Math.random() * -50
+    );
+}
+
+function drawMatrix() {
+    ctx.fillStyle = "rgba(2, 8, 7, 0.12)";
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+    ctx.fillStyle = "#00ff9d";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const char =
+            characters[Math.floor(Math.random() * characters.length)];
+
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (
+            drops[i] * fontSize > window.innerHeight &&
+            Math.random() > 0.975
+        ) {
+            drops[i] = 0;
+        }
+
+        drops[i] += 0.7;
+    }
+}
+
+resizeMatrix();
+window.addEventListener("resize", resizeMatrix);
+setInterval(drawMatrix, 55);
+</script>
+
+</body>
+  </html>
